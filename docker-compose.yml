@@ -1,0 +1,8 @@
+version: '3'
+services:
+  go:
+    image: cidades-do-brasil-go
+    build: ./
+    volumes:
+      - ./data:/data
+    tty: true
