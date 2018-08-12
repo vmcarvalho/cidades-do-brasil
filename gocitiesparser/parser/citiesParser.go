@@ -16,12 +16,14 @@ type CitiesParser struct {
 	citiesArray []model.City
 }
 
-const CATEGORY_INDEX = 2
-const NAME_INDEX = 1
-const UF_INDEX = 5
-const LAT_INDEX = 6
-const LON_INDEX = 7
-const CITY_CATEGORY = "LIM"
+const (
+	CATEGORY_INDEX = 2
+	NAME_INDEX     = 1
+	UF_INDEX       = 5
+	LAT_INDEX      = 6
+	LON_INDEX      = 7
+	CITY_CATEGORY  = "LIM"
+)
 
 func NewCitiesParser(input string) *CitiesParser {
 	p := new(CitiesParser)
