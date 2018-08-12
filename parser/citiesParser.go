@@ -5,7 +5,7 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"errors"
-	model "github.com/vmcarvalho/cidades-do-brasil/gocitiesparser/model"
+	model "github.com/vmcarvalho/cidades-do-brasil/model"
 	"io"
 	"os"
 	"strconv"

@@ -4,7 +4,7 @@ import (
 	"errors"
 	driver "github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
-	model "github.com/vmcarvalho/cidades-do-brasil/gocitiesparser/model"
+	model "github.com/vmcarvalho/cidades-do-brasil/model"
 )
 
 const (

@@ -9,24 +9,16 @@ ARG CSV_DATABASE_URL=ftp://geoftp.ibge.gov.br/cartas_e_mapas/bases_cartograficas
 # for internal use
 ARG TEMP_DOWNLOAD_PATH=/tmp/input.csv
 ENV TEMP_DOWNLOAD_PATH ${TEMP_DOWNLOAD_PATH}
-ARG APP_DIR=$GOPATH/src/github.com/vmcarvalho/cidades-do-brasil/gocitiesparser/
-# ENV APP_DIR ${APP_DIR}
+ARG APP_DIR=$GOPATH/src/github.com/vmcarvalho/cidades-do-brasil/
 
-#RUN mkdir /internal_data;
-#WORKDIR /internal_data;
+# download input file
 RUN wget --output-document $TEMP_DOWNLOAD_PATH $CSV_DATABASE_URL
 
-ADD ./gocitiesparser $APP_DIR
+ADD ./ $APP_DIR
 
-
-# Install glide
-#RUN sh -c "curl https://glide.sh/get | sh"
-
-
-#RUN glide install -s -v; \
+# Get dependencies
 RUN go get github.com/globalsign/mgo;
 
 WORKDIR $APP_DIR
-RUN \
-	go build -o main
+RUN go build -o main
 CMD ./main ${TEMP_DOWNLOAD_PATH} ${DATABASE_URL}

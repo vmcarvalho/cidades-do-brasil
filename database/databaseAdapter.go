@@ -1,7 +1,7 @@
 package database
 
 import (
-	model "github.com/vmcarvalho/cidades-do-brasil/gocitiesparser/model"
+	model "github.com/vmcarvalho/cidades-do-brasil/model"
 )
 
 type DatabaseAdapter interface {
