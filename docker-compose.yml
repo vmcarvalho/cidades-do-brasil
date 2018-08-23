@@ -2,7 +2,23 @@ version: '3'
 services:
   go:
     image: cidades-do-brasil-go
-    build: ./
+    build: 
+      context: ./
+      args:
+        # mongo url: mongodb://[user:pass@]host[:port]/database[?options]
+        DATABASE_URL: "mongodb://mongodb:27017/CidadesDoBrasil"
+    depends_on:
+      - mongodb
+    links: 
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    environment:
+      - MONGO_DATA_DIR=/data/db
     volumes:
-      - ./data:/data
-    tty: true
+      - "./mongodata/db:/data/db"
+    ports:
+        - 27017:27017
+    restart: always
+    command: mongod --smallfiles --logpath=/dev/null
